@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <!-- Raspberry Pi -->
+  <project path="device/brcm/rpi" name="twrp-raspberry/android_device_brcm_rpi" remote="github" revision="twrp-11" />
+
+  <!-- TWRP -->
+  <remove-project name="android_bootable_recovery" />
+  <remove-project name="android_build" />
+  <remove-project name="android_system_core" />
+  <project path="bootable/recovery" name="twrp-raspberry/android_bootable_recovery" remote="github" revision="twrp-11" />
+  <project path="build/make" name="twrp-raspberry/android_build" remote="github" revision="twrp-11" >
+    <copyfile src="core/root.mk" dest="Makefile"/>
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk"/>
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default"/>
+    <linkfile src="core" dest="build/core"/>
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh"/>
+    <linkfile src="target" dest="build/target"/>
+    <linkfile src="tools" dest="build/tools"/>
+  </project>
+  <project path="system/core" name="twrp-raspberry/android_system_core" remote="github" revision="twrp-11" />
+
+</manifest>
